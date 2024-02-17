@@ -36,4 +36,11 @@ springdoc:
 
 timezone: "UTC"
 
+schedule:
+  mysql:
+    start: "09:00"
+    end: "17:00"
+  elastic:
+    start: "17:01"
+    end: "08:59"
 

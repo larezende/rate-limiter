@@ -10,19 +10,20 @@ public class UserDtoMapper {
     }
 
     public static User toUser(UpsertUserDto upsertUserDto) {
-        User user = new User();
-        user.setFirstName(upsertUserDto.getFirstName());
-        user.setLastName(upsertUserDto.getLastName());
-        return user;
+        return User.builder()
+            .firstName(upsertUserDto.getFirstName())
+            .lastName(upsertUserDto.getLastName())
+            .build();
     }
 
     public static UserDto toUserDto(User user) {
-        UserDto userDto = new UserDto();
-        userDto.setId(user.getId());
-        userDto.setFirstName(user.getFirstName());
-        userDto.setLastName(user.getLastName());
-        userDto.setLastLoginTimeUtc(user.getLastLoginTimeUtc());
-        return userDto;
+        return UserDto.builder()
+            .id(user.getId())
+            .firstName(user.getFirstName())
+            .lastName(user.getLastName())
+            .lastLoginTimeUtc(user.getLastLoginTimeUtc())
+            .currentQuota(user.getCurrentQuota())
+            .build();
     }
 
 

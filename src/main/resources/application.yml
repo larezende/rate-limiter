@@ -4,7 +4,7 @@ server:
 
 spring:
   application:
-    name: service-enrollment
+    name: rate-limiter
   datasource:
     url: ${DATABASE_JDBC_URL}
     username: ${DATABASE_USERNAME}
@@ -22,6 +22,12 @@ spring:
     password: ${DATABASE_PASSWORD}
     locations: classpath:db/migration
     enabled: true
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+
 
 logging:
   level:
@@ -33,7 +39,6 @@ springdoc:
   api-docs:
     path: /api-docs
 
-
 timezone: "UTC"
 
 schedule:
@@ -44,3 +49,4 @@ schedule:
     start: "17:01"
     end: "08:59"
 
+maximum-quota: ${MAXIMUM_QUOTA:5}

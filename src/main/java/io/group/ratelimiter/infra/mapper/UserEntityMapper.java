@@ -14,6 +14,7 @@ public class UserEntityMapper {
             .firstName(userEntity.getFirstName())
             .lastName(userEntity.getLastName())
             .lastLoginTimeUtc(userEntity.getLastLoginTimeUtc())
+            .currentQuota(userEntity.getCurrentQuota())
             .build();
     }
 
@@ -23,6 +24,7 @@ public class UserEntityMapper {
             .firstName(user.getFirstName())
             .lastName(user.getLastName())
             .lastLoginTimeUtc(user.getLastLoginTimeUtc())
+            .currentQuota(user.getCurrentQuota())
             .build();
     }
 

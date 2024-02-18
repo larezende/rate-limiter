@@ -16,5 +16,16 @@ services:
     volumes:
       - my-db:/var/lib/mysql
 
+  cache:
+    image: redis:7
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --requirepass password
+    volumes:
+      - cache:/data
+
+
 volumes:
   my-db:
+  cache:

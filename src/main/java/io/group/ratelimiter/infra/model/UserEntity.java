@@ -22,6 +22,11 @@ import java.time.LocalDateTime;
 @Builder(toBuilder = true)
 public class UserEntity {
 
+    public UserEntity(String id, Integer currentQuota) {
+        this.id = id;
+        this.currentQuota = currentQuota;
+    }
+
     @Id
     private String id;
 
@@ -33,5 +38,8 @@ public class UserEntity {
 
     @Column
     private LocalDateTime lastLoginTimeUtc;
+
+    @Column
+    private Integer currentQuota;
 
 }

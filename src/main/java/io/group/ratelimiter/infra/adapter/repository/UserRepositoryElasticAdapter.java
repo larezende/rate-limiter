@@ -5,6 +5,7 @@ import io.group.ratelimiter.domain.port.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -37,6 +38,15 @@ public class UserRepositoryElasticAdapter implements UserRepository {
     @Override
     public void deleteUser(String id) {
         log.info("deleteUser({})", id);
+    }
+
+    @Override
+    public List<User> getAllUsersQuota() {
+        return List.of(User.builder()
+            .id("id")
+            .firstName("John")
+            .lastName("Doe")
+            .build());
     }
 
 }

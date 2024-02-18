@@ -7,6 +7,7 @@ import io.group.ratelimiter.infra.mapper.UserEntityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -34,6 +35,12 @@ public class UserRepositoryMysqlAdapter implements UserRepository {
     @Override
     public void deleteUser(String id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<User> getAllUsersQuota() {
+        var usersQuotas = repository.findAllUsersQuota();
+        return usersQuotas.stream().map(UserEntityMapper::toUser).toList();
     }
 
     private User saveUser(User user) {

@@ -3,6 +3,7 @@ package io.group.ratelimiter.app.controller;
 
 import io.group.ratelimiter.app.dto.ErrorDto;
 import io.group.ratelimiter.domain.exception.NotFoundException;
+import io.group.ratelimiter.domain.exception.QuotaExceededException;
 import io.group.ratelimiter.infra.exception.RepositoryUnavailableException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,11 @@ public class ControllerAdvice {
     public ResponseEntity<ErrorDto> repositoryUnavailableException(final RepositoryUnavailableException exception) {
         log.error(exception.getMessage(), exception);
         return buildResponse(exception.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);
+    }
+
+    @ExceptionHandler(QuotaExceededException.class)
+    public ResponseEntity<ErrorDto> quotaExceededException(final QuotaExceededException exception) {
+        return buildResponse(exception.getMessage(), HttpStatus.TOO_MANY_REQUESTS);
     }
 
     private ResponseEntity<ErrorDto> buildResponse(final String message, final HttpStatus httpStatus) {

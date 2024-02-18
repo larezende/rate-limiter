@@ -2,6 +2,7 @@ package io.group.ratelimiter.domain.port.repository;
 
 import io.group.ratelimiter.domain.model.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository {
@@ -13,5 +14,7 @@ public interface UserRepository {
     User updateUser(User user);
 
     void deleteUser(String id);
+
+    List<User> getAllUsersQuota();
 
 }

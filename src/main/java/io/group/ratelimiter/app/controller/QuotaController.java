@@ -20,9 +20,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QuotaController {
 
-    final QuotaService quotaService;
+    private final QuotaService quotaService;
 
-    final UserService userService;
+    private final UserService userService;
 
     @PostMapping("/{userId}")
     public ResponseEntity<UserQuotaDto> consumeQuota(@PathVariable final String userId) {
@@ -32,10 +32,10 @@ public class QuotaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserQuotaDto>> getUsersQuota() {
-        var usersQuota = userService.getAllUsersQuota();
-        var usersQuotaDtos = usersQuota.stream().map(UserQuotaMapper::toUserQuotaDto).toList();
-        return ResponseEntity.status(HttpStatus.OK).body(usersQuotaDtos);
+    public ResponseEntity<List<UserQuotaDto>> getUsersQuotas() {
+        var usersQuotas = userService.getAllUsersQuotas();
+        var usersQuotasDtos = usersQuotas.stream().map(UserQuotaMapper::toUserQuotaDto).toList();
+        return ResponseEntity.status(HttpStatus.OK).body(usersQuotasDtos);
     }
 
 }

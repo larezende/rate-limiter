@@ -10,18 +10,9 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class QuotaRepositoryRedisAdapter implements QuotaRepository {
 
-    private static final String QUOTA_KEY = "quota";
+    public static final String QUOTA_KEY = "quota";
 
-    final StringRedisTemplate stringRedisTemplate;
-
-    @Override
-    public UserQuota getQuota(String userId) {
-        var currentQuota = (String) stringRedisTemplate.opsForHash().get(QUOTA_KEY, userId);
-        if (currentQuota == null) {
-            return new UserQuota(userId, 0);
-        }
-        return new UserQuota(userId, Integer.parseInt(currentQuota));
-    }
+    private final StringRedisTemplate stringRedisTemplate;
 
     @Override
     public UserQuota incrementQuota(String userId) {

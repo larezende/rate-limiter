@@ -16,9 +16,9 @@ import java.time.LocalTime;
 @RequiredArgsConstructor
 public class UserRepositoryProviderTimeAdapter implements UserRepositoryProvider {
 
-    private final UserRepositoryElasticAdapter userElasticRepository;
-
     private final UserRepositoryMysqlAdapter userMysqlRepository;
+
+    private final UserRepositoryElasticAdapter userElasticRepository;
 
     @Qualifier("mysqlTimeSchedule")
     private final TimeSchedule mysqlTimeSchedule;

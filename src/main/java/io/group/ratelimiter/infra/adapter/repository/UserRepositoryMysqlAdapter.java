@@ -38,8 +38,8 @@ public class UserRepositoryMysqlAdapter implements UserRepository {
     }
 
     @Override
-    public List<User> getAllUsersQuota() {
-        var usersQuotas = repository.findAllUsersQuota();
+    public List<User> getAllUsersQuotas() {
+        var usersQuotas = repository.findAllUsersQuotas();
         return usersQuotas.stream().map(UserEntityMapper::toUser).toList();
     }
 

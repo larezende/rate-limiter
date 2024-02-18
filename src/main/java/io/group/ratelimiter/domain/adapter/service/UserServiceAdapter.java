@@ -61,9 +61,9 @@ public class UserServiceAdapter implements UserService {
     }
 
     @Override
-    public List<User> getAllUsersQuota() {
+    public List<User> getAllUsersQuotas() {
         var repository = getRepository();
-        return repository.getAllUsersQuota();
+        return repository.getAllUsersQuotas();
     }
 
     private UserRepository getRepository() {

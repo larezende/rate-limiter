@@ -43,10 +43,10 @@ timezone: "UTC"
 
 schedule:
   mysql:
-    start: "09:00"
-    end: "17:00"
+    start: ${SCHEDULE_START_MYSQL:00:00}
+    end: ${SCHEDULE_END_MYSQL:23:59}
   elastic:
-    start: "17:01"
-    end: "08:59"
+    start: ${SCHEDULE_START_ELASTIC:17:01}
+    end: ${SCHEDULE_END_ELASTIC:08:59}
 
 maximum-quota: ${MAXIMUM_QUOTA:5}

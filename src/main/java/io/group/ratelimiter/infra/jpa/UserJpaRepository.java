@@ -9,6 +9,6 @@ import java.util.List;
 public interface UserJpaRepository extends JpaRepository<UserEntity, String> {
 
     @Query("SELECT new UserEntity(u.id, u.currentQuota) FROM UserEntity u")
-    List<UserEntity> findAllUsersQuota();
+    List<UserEntity> findAllUsersQuotas();
 
 }

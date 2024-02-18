@@ -15,6 +15,6 @@ public interface UserRepository {
 
     void deleteUser(String id);
 
-    List<User> getAllUsersQuota();
+    List<User> getAllUsersQuotas();
 
 }

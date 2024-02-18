@@ -41,7 +41,7 @@ public class UserRepositoryElasticAdapter implements UserRepository {
     }
 
     @Override
-    public List<User> getAllUsersQuota() {
+    public List<User> getAllUsersQuotas() {
         return List.of(User.builder()
             .id("id")
             .firstName("John")

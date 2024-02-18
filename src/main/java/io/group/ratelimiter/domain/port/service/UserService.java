@@ -16,6 +16,6 @@ public interface UserService {
 
     void updateUserQuota(String id, int quota);
 
-    List<User> getAllUsersQuota();
+    List<User> getAllUsersQuotas();
 
 }

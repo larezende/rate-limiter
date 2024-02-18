@@ -15,15 +15,15 @@ public class QuotaServiceAdapter implements QuotaService {
     private final QuotaRepository quotaRepository;
 
     @Value("${maximum-quota}")
-    private int maxQuota;
+    private final int maxQuota;
 
     @Override
     public UserQuota consumeQuota(String userId) {
-        var current = quotaRepository.getQuota(userId);
-        if (current.getUsage() >= maxQuota) {
+        var userQuota = quotaRepository.incrementQuota(userId);
+        if (userQuota.getUsage() >= maxQuota) {
             throw new QuotaExceededException("Quota exceeded");
         }
-        return quotaRepository.incrementQuota(userId);
+        return userQuota;
     }
 
 }

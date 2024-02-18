@@ -20,7 +20,7 @@ public class QuotaServiceAdapter implements QuotaService {
     @Override
     public UserQuota consumeQuota(String userId) {
         var userQuota = quotaRepository.incrementQuota(userId);
-        if (userQuota.getUsage() >= maxQuota) {
+        if (userQuota.getUsage() > maxQuota) {
             throw new QuotaExceededException("Quota exceeded");
         }
         return userQuota;

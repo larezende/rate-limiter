@@ -8,18 +8,31 @@ Uses mysql as main database.
 
 And Redis as cache service for the rates.
 
+## API
+
 It has 2 APIs:
 
-1. User API /user
-2. Quota API /quota
+1. User API ``` /user ```
+2. Quota API ``` /quota ```
+
+With the project running you can access the swagger documentation and test the API on:
+``` /docs/swagger-ui/index.html ```
 
 ### User API
 
 Contains basic CRUD operations for user.
 
+- Create user ``` POST / ```
+- Get user ``` GET /{userId} ```
+- Update user ``` PUT /{userId} ```
+- Delete user ``` DELETE /{userId} ```
+
 ### Quota API
 
 Contains consume rate quota for user and list all users quotas usages.
+
+- Consume quota ``` POST /{userId} ```
+- List all quotas ``` GET / ```
 
 ## Running
 
@@ -29,7 +42,7 @@ To run everything locally you can use the docker-compose on the project root fol
 
 It should start the mysql and redis services and build and run the application.
 
-Otherwise you can build the application with gradle and run the jar directly.
+Otherwise, you can build the application with gradle and run the jar directly.
 
 ```./gradlew assemble ```
 

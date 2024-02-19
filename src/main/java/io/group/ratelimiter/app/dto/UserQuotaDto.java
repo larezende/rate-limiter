@@ -8,6 +8,6 @@ import lombok.Data;
 public class UserQuotaDto {
 
     private String userId;
-    private int usage;
+    private Integer usage;
 
 }

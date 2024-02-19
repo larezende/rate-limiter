@@ -23,6 +23,7 @@ public class UserServiceAdapter implements UserService {
     public User createUser(User user) {
         var repository = getRepository();
         user.setId(UUID.randomUUID().toString());
+        user.setCurrentQuota(0);
         return repository.createUser(user);
     }
 

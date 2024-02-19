@@ -17,14 +17,34 @@ services:
       - my-db:/var/lib/mysql
 
   cache:
-    image: redis:7-alpine
-    restart: always
+    image: redis:7
+    restart: unless-stopped
     ports:
       - '6379:6379'
     command: redis-server --requirepass password
     volumes:
       - cache:/data
 
+  rate-limiter:
+    image: rate-limiter:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    environment:
+      DATABASE_JDBC_URL: 'jdbc:mysql://db:3306/rate-limiter'
+      DATABASE_USERNAME: 'user'
+      DATABASE_PASSWORD: 'password'
+      REDIS_HOST: 'cache'
+      REDIS_PORT: '6379'
+      REDIS_PASSWORD: 'password'
+    depends_on:
+      - db
+      - cache
+    links:
+      - db
+      - cache
 
 volumes:
   my-db:

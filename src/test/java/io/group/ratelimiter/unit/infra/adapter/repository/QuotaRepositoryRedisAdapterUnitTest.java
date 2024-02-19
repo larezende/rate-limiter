@@ -33,7 +33,7 @@ class QuotaRepositoryRedisAdapterUnitTest extends AbstractUnitTest {
 
         var result = quotaRepositoryRedisAdapter.incrementQuota(userId);
 
-        assertEquals(incremented, result.getUsage());
+        assertEquals(incremented, result.getUsage().longValue());
     }
 
 
